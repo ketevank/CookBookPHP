@@ -1,0 +1,10 @@
+
+
+AD. obrazki wstawiane przez użytkownika:
+$_POST
+$_FILES
+format MIME (sprawdź co to)
+walidacja pliku (najpierw plik do katalogu tymczasowego, a po walidacji do katalogu docelowego /public/uploads/photos - wywołanie metody przenoszącej)
+co do symfony:
+    zapisać do bazy danych losową nazwę pliku (aby uniknąć powtórzeń w nazwach użytkownika)
+    klasa Uploaded File
