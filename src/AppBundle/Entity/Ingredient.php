@@ -85,5 +85,12 @@ class Ingredient
     {
         $this->recipes = $recipes;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
+
 }
 

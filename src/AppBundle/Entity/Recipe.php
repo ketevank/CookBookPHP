@@ -117,5 +117,12 @@ class Recipe
     {
         $this->ingredients = $ingredients;
     }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
+
 }
 
