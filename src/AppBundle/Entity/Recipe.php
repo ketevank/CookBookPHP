@@ -37,6 +37,14 @@ class Recipe
 
 
     /**
+     * Many Users have Many Groups.
+     * @ORM\ManyToMany(targetEntity="Ingredient", inversedBy="recipies")
+     * @ORM\JoinTable(name="ingredients_list")
+     */
+    private $ingredients;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -92,6 +100,22 @@ class Recipe
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIngredients()
+    {
+        return $this->ingredients;
+    }
+
+    /**
+     * @param mixed $ingredients
+     */
+    public function setIngredients($ingredients)
+    {
+        $this->ingredients = $ingredients;
     }
 }
 

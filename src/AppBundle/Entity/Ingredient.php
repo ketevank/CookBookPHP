@@ -28,6 +28,13 @@ class Ingredient
      */
     private $name;
 
+    // ...
+    /**
+     * Many Groups have Many Users.
+     * @ORM\ManyToMany(targetEntity="Recipe", mappedBy="ingredients")
+     */
+    private $recipes;
+
 
     /**
      * Get id
@@ -61,6 +68,22 @@ class Ingredient
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRecipes()
+    {
+        return $this->recipes;
+    }
+
+    /**
+     * @param mixed $recipes
+     */
+    public function setRecipes($recipes)
+    {
+        $this->recipes = $recipes;
     }
 }
 
