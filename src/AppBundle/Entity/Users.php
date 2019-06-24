@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Users
@@ -12,6 +13,28 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Users
 {
+
+    /**
+     * Role user.
+     *
+     * @var string
+     */
+    const ROLE_USER = 'ROLE_USER';
+
+    /**
+     * Role admin.
+     *
+     * @var string
+     */
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+
+    /**
+     * Roles.
+     *
+     * @ORM\Column(type="array")
+     */
+    private $roles = [];
+
     /**
      * @var int
      *
@@ -27,6 +50,21 @@ class Users
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
+
+    /**
+     * E-mail.
+     *
+     * @var string $email
+     *
+     * @ORM\Column(
+     *     type="string",
+     *     length=128,
+     * )
+     *
+     * @Assert\NotBlank
+     * @Assert\Email
+     */
+    private $email;
 
     /**
      * @var string
@@ -71,6 +109,24 @@ class Users
     }
 
     /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+
+
+    /**
      * Set password
      *
      * @param string $password
@@ -93,5 +149,23 @@ class Users
     {
         return $this->password;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * @param mixed $roles
+     */
+    public function setRoles($roles): void
+    {
+        $this->roles = $roles;
+    }
+
+
 }
 

@@ -101,8 +101,8 @@ class IngredientController extends Controller
     /**
      * Deletes a ingredient entity.
      *
-     * @Route("/{id}", name="ingredient_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="ingredient_delete")
+     * @Method("POST")
      */
     public function deleteAction(Request $request, Ingredient $ingredient)
     {
@@ -129,7 +129,6 @@ class IngredientController extends Controller
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('ingredient_delete', array('id' => $ingredient->getId())))
-            ->setMethod('DELETE')
             ->getForm()
         ;
     }

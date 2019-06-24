@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Recipe;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Psr\Log\LoggerInterface;
 
 /**
  * Recipe controller.
@@ -79,8 +81,10 @@ class RecipeController extends Controller
      * @Route("/{id}/edit", name="recipe_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Recipe $recipe)
+    public function editAction(Request $request, Recipe $recipe,  LoggerInterface $logger)
     {
+        $logger->info("Test");
+        $logger->error("Test");
         $deleteForm = $this->createDeleteForm($recipe);
         $editForm = $this->createForm('AppBundle\Form\RecipeType', $recipe);
         $editForm->handleRequest($request);
@@ -101,10 +105,10 @@ class RecipeController extends Controller
     /**
      * Deletes a recipe entity.
      *
-     * @Route("/{id}", name="recipe_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="recipe_delete")
+     * @Method("POST")
      */
-    public function deleteAction(Request $request, Recipe $recipe)
+    public function deleteAction(Request $request, Recipe $recipe, LoggerInterface $logger)
     {
         $form = $this->createDeleteForm($recipe);
         $form->handleRequest($request);
@@ -129,7 +133,6 @@ class RecipeController extends Controller
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('recipe_delete', array('id' => $recipe->getId())))
-            ->setMethod('DELETE')
             ->getForm()
         ;
     }
