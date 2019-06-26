@@ -99,14 +99,14 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     public function getCredentials(Request $request): array
     {
         $credentials = [
-            'email' => $request->request->get('email'),
+            'name' => $request->request->get('name'),
             'password' => $request->request->get('password'),
             'csrf_token' => $request->request->get('_csrf_token'),
         ];
 
         $request->getSession()->set(
             Security::LAST_USERNAME,
-            $credentials['email']
+            $credentials['name']
         );
 
         return $credentials;
@@ -128,7 +128,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         }
 
         return $this->userRepository->findOneBy(
-            ['email' => $credentials['email']]
+            ['name' => $credentials['name']]
         );
     }
 

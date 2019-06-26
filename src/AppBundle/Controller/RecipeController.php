@@ -108,7 +108,7 @@ class RecipeController extends Controller
      * @Route("/{id}/delete", name="recipe_delete")
      * @Method("POST")
      */
-    public function deleteAction(Request $request, Recipe $recipe, LoggerInterface $logger)
+    public function deleteAction(Request $request, Recipe $recipe)
     {
         $form = $this->createDeleteForm($recipe);
         $form->handleRequest($request);

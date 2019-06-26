@@ -1,0 +1,8 @@
+{# app/Resources/views/registration/register.html.twig #}
+{{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.password.first) }}
+    {{ form_row(form.password.second) }}
+
+<button type="submit">Register!</button>
+{{ form_end(form) }}
