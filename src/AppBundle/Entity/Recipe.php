@@ -19,8 +19,7 @@ class Recipe
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM/ManyToOne(targetEntity="Users")
-     * @ORM/JoinColumn(name="user_id", referencedColumnName="id")
+     *
      */
     private $id;
 
@@ -46,6 +45,11 @@ class Recipe
      */
     private $ingredients;
 
+    /*
+     * @ORM/ManyToOne(targetEntity="Users")
+     * @ORM/JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
 
     /**
      * Get id
@@ -119,6 +123,14 @@ class Recipe
     public function setIngredients($ingredients)
     {
         $this->ingredients = $ingredients;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     public function __toString()
