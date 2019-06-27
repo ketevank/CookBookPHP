@@ -3,11 +3,13 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Recipe;
+use AppBundle\Entity\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Recipe controller.
@@ -22,11 +24,11 @@ class RecipeController extends Controller
      * @Route("/", name="recipe_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(UserInterface $users)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $recipes = $em->getRepository('AppBundle:Recipe')->findAll();
+        $recipes = $em->getRepository('AppBundle:Recipe')->findAll(); //findBy(array("username" => $users->getUsername()));
 
         return $this->render('recipe/index.html.twig', array(
             'recipes' => $recipes,
@@ -81,7 +83,7 @@ class RecipeController extends Controller
      * @Route("/{id}/edit", name="recipe_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Recipe $recipe,  LoggerInterface $logger)
+    public function editAction(Request $request, Recipe $recipe, LoggerInterface $logger)
     {
         $logger->info("Test");
         $logger->error("Test");
@@ -133,7 +135,6 @@ class RecipeController extends Controller
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('recipe_delete', array('id' => $recipe->getId())))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

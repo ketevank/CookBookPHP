@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="recipe")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RecipeRepository")
+ *
  */
 class Recipe
 {
@@ -18,6 +19,8 @@ class Recipe
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM/ManyToOne(targetEntity="Users")
+     * @ORM/JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $id;
 

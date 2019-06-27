@@ -1,21 +1,28 @@
 {% extends 'base.html.twig' %}
 
+{% block header %}
+    <h1>{{ recipe.title }}</h1>
+{% endblock %}
+
 {% block body %}
-    <h1>Recipe edit</h1>
+<div id="wrapper">
+    <div id="left">
+    <h1>Edycja wpisu</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <input type="submit" value="Potwierdź zmiany" />
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('recipe_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <a href="{{ path('recipe_index') }}">Powrót do listy</a>
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Usuń">
+        {{ form_end(delete_form) }}
+    </div>
+    <div id="right">
+        <a class="btn btn-primary float-right" href="{{ path('recipe_new') }}">Nowy przepis</a>
+        <a class="btn btn-primary float-right" href="#">Wyloguj się</a>
+        <a class="btn btn-primary float-right" href="/">Strona główna</a>
+    </div>
+</div>
 {% endblock %}
