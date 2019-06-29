@@ -6,6 +6,7 @@ use AppBundle\Entity\Ingredient;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Ingredient controller.
@@ -20,11 +21,11 @@ class IngredientController extends Controller
      * @Route("/", name="ingredient_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(UserInterface $users)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $ingredients = $em->getRepository('AppBundle:Ingredient')->findAll();
+        $ingredients = $em->getRepository('AppBundle:Ingredient')->findBy(array("user" => $users->getUsername()));
 
         return $this->render('ingredient/index.html.twig', array(
             'ingredients' => $ingredients,
@@ -37,7 +38,7 @@ class IngredientController extends Controller
      * @Route("/new", name="ingredient_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, UserInterface $users)
     {
         $ingredient = new Ingredient();
         $form = $this->createForm('AppBundle\Form\IngredientType', $ingredient);
@@ -45,6 +46,8 @@ class IngredientController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $userEntity = $em->getRepository('AppBundle:Users')->findOneBy(array("name" => $users->getUsername()));
+            $ingredient->setUser($userEntity);
             $em->persist($ingredient);
             $em->flush();
 
@@ -79,8 +82,12 @@ class IngredientController extends Controller
      * @Route("/{id}/edit", name="ingredient_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Ingredient $ingredient)
+    public function editAction(Request $request, Ingredient $ingredient, UserInterface $users)
     {
+        if ($ingredient->getUser()->getUsername() != $users->getUsername()) {
+            return $this->redirectToRoute('recipe_index');
+        }
+
         $deleteForm = $this->createDeleteForm($ingredient);
         $editForm = $this->createForm('AppBundle\Form\IngredientType', $ingredient);
         $editForm->handleRequest($request);
@@ -104,8 +111,12 @@ class IngredientController extends Controller
      * @Route("/{id}/delete", name="ingredient_delete")
      * @Method("POST")
      */
-    public function deleteAction(Request $request, Ingredient $ingredient)
+    public function deleteAction(Request $request, Ingredient $ingredient, UserInterface $users)
     {
+        if ($ingredient->getUser()->getUsername() != $users->getUsername()) {
+            return $this->redirectToRoute('recipe_index');
+        }
+
         $form = $this->createDeleteForm($ingredient);
         $form->handleRequest($request);
 

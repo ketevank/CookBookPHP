@@ -4,12 +4,14 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Recipe;
 use AppBundle\Entity\Users;
+use AppBundle\Entity\Ingredient;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * Recipe controller.
@@ -28,7 +30,7 @@ class RecipeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $recipes = $em->getRepository('AppBundle:Recipe')->findAll(); //findBy(array("username" => $users->getUsername()));
+        $recipes = $em->getRepository('AppBundle:Recipe')->findBy(array("user" => $users->getUsername()));
 
         return $this->render('recipe/index.html.twig', array(
             'recipes' => $recipes,
@@ -41,7 +43,7 @@ class RecipeController extends Controller
      * @Route("/new", name="recipe_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, UserInterface $users)
     {
         $recipe = new Recipe();
         $form = $this->createForm('AppBundle\Form\RecipeType', $recipe);
@@ -49,6 +51,8 @@ class RecipeController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $userEntity = $em->getRepository('AppBundle:Users')->findOneBy(array("name" => $users->getUsername()));
+            $recipe->setUser($userEntity);
             $em->persist($recipe);
             $em->flush();
 
@@ -67,13 +71,14 @@ class RecipeController extends Controller
      * @Route("/{id}", name="recipe_show")
      * @Method("GET")
      */
-    public function showAction(Recipe $recipe)
+    public function showAction(Recipe $recipe, UserInterface $users)
     {
         $deleteForm = $this->createDeleteForm($recipe);
 
         return $this->render('recipe/show.html.twig', array(
             'recipe' => $recipe,
             'delete_form' => $deleteForm->createView(),
+            'current_user' => $users->getUsername(),
         ));
     }
 
@@ -83,10 +88,12 @@ class RecipeController extends Controller
      * @Route("/{id}/edit", name="recipe_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Recipe $recipe, LoggerInterface $logger)
+    public function editAction(Request $request, Recipe $recipe, UserInterface $users)
     {
-        $logger->info("Test");
-        $logger->error("Test");
+        if ($recipe->getUser()->getUsername() != $users->getUsername()) {
+            return $this->redirectToRoute('recipe_index');
+        }
+
         $deleteForm = $this->createDeleteForm($recipe);
         $editForm = $this->createForm('AppBundle\Form\RecipeType', $recipe);
         $editForm->handleRequest($request);
@@ -94,7 +101,7 @@ class RecipeController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('recipe_edit', array('id' => $recipe->getId()));
+            return $this->redirectToRoute('recipe_show', array('id' => $recipe->getId()));
         }
 
         return $this->render('recipe/edit.html.twig', array(
@@ -110,8 +117,13 @@ class RecipeController extends Controller
      * @Route("/{id}/delete", name="recipe_delete")
      * @Method("POST")
      */
-    public function deleteAction(Request $request, Recipe $recipe)
+    public function deleteAction(Request $request, Recipe $recipe, UserInterface $users)
     {
+        if ($recipe->getUser()->getUsername() != $users->getUsername()) {
+            return $this->redirectToRoute('recipe_index');
+        }
+
+
         $form = $this->createDeleteForm($recipe);
         $form->handleRequest($request);
 
@@ -137,4 +149,5 @@ class RecipeController extends Controller
             ->setAction($this->generateUrl('recipe_delete', array('id' => $recipe->getId())))
             ->getForm();
     }
+
 }

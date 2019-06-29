@@ -17,6 +17,13 @@
     </table>
 
     <ul>
+
+        <div class="recipies">
+            {% for recipe in ingredient.recipes %}
+                <a href="/recipe/{{ recipe.id }}">{{ recipe.title }}</a>
+            {% endfor %}
+        </div>
+
         <li>
             <a href="{{ path('ingredient_index') }}">Back to the list</a>
         </li>

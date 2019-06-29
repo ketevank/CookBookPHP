@@ -45,9 +45,10 @@ class Recipe
      */
     private $ingredients;
 
-    /*
-     * @ORM/ManyToOne(targetEntity="Users")
-     * @ORM/JoinColumn(name="user_id", referencedColumnName="id")
+    /**
+     * @var string
+     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\JoinColumn(name="user_name", referencedColumnName="name")
      */
     private $user;
 
@@ -131,6 +132,14 @@ class Recipe
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
+    {
+        $this->user = $user;
     }
 
     public function __toString()

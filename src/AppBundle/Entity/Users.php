@@ -37,17 +37,8 @@ class Users implements UserInterface
     private $roles = [];
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
      * @var string
-     *
+     * @ORM\Id
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
@@ -58,17 +49,6 @@ class Users implements UserInterface
      * @ORM\Column(name="password", type="string", length=255, unique=true)
      */
     private $password;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set name
@@ -123,7 +103,9 @@ class Users implements UserInterface
      */
     public function getRoles()
     {
-        return $this->roles;
+        $roles = $this->roles;
+        array_push($roles, self::ROLE_USER);
+        return $roles;
     }
 
     /**
@@ -165,6 +147,22 @@ class Users implements UserInterface
      */
     public function eraseCredentials()
     {
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRecipes()
+    {
+        return $this->recipes;
+    }
+
+    /**
+     * @param mixed $recipes
+     */
+    public function setRecipes($recipes): void
+    {
+        $this->recipes = $recipes;
     }
 }
 

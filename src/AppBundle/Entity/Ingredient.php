@@ -30,10 +30,17 @@ class Ingredient
 
     // ...
     /**
-     * Many Groups have Many Users.
+     * Many Ingredients have Many Recipes.
      * @ORM\ManyToMany(targetEntity="Recipe", mappedBy="ingredients")
      */
     private $recipes;
+
+    /**
+     * @var string
+     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\JoinColumn(name="user_name", referencedColumnName="name")
+     */
+    private $user;
 
 
     /**
@@ -91,6 +98,21 @@ class Ingredient
         return $this->getName();
     }
 
+    /**
+     * @return string
+     */
+    public function getUser(): string
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param string $user
+     */
+    public function setUser(string $user): void
+    {
+        $this->user = $user;
+    }
 
 }
 

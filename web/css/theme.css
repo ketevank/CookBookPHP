@@ -39,39 +39,54 @@ a:focus, a:hover {
     color: #0085A1;
 }
 
-blockquote {
+/*blockquote {
     font-style: italic;
     color: #868e96;
+}*/
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-.section-heading {
+.menu li {
+    display: inline;
+}
+
+.hello {
+    text-align: center;
+    margin: 70px;
+}
+
+/*.section-heading {
     font-size: 36px;
     font-weight: 700;
     margin-top: 60px;
-}
+}*/
 
-#wrapper {
+/*#wrapper {
     display: flex;
 }
 
 #left {
     flex: 0 0 65%;
-}
+}*/
 
-#right {
+/*#right {
     flex: 1;
-}
+}*/
 
-#right a {
-    display: block; /* Make the links appear below each other */
+/*#right a {
+    display: block; !* Make the links appear below each other *!
     padding: 12px;
-}
+}*/
 
 .container {
     /*margin-bottom: 50px;*/
 }
 
-.caption {
+/*.caption {
     font-size: 14px;
     font-style: italic;
     display: block;
@@ -80,9 +95,9 @@ blockquote {
     text-align: center;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
-}
+}*/
 
-::-moz-selection {
+/*::-moz-selection {
     color: #fff;
     background: #0085A1;
     text-shadow: none;
@@ -97,9 +112,9 @@ blockquote {
 img::-moz-selection {
     color: #fff;
     background: transparent;
-}
+}*/
 
-img::selection {
+/*img::selection {
     color: #fff;
     background: transparent;
 }
@@ -107,7 +122,7 @@ img::selection {
 img::-moz-selection {
     color: #fff;
     background: transparent;
-}
+}*/
 
 #mainNav {
     position: absolute;
