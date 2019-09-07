@@ -1,10 +1,16 @@
 {% extends 'base.html.twig' %}
-
 {% block menu %}
     <div class="collapse navbar-collapse" id="navbarResponsive">
+        <a class="navbar-brand">Witaj, {{ app.user.username }}!</a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="/">Strona główna</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('recipe_index') }}">Lista przepisów</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('ingredient_index') }}">Składniki</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('recipe_new') }}">Nowy przepis</a>
@@ -17,11 +23,11 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Ingredient creation</h1>
+    <h1>Dodaj składnik</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Dodaj" />
     {{ form_end(form) }}
 
     <a href="{{ path('recipe_new') }}">Wróć do przepisu</a>

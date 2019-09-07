@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad16b54abd4bfd1a1cb1842b540f2561",
+    "content-hash": "cabf60bd24c84c023b0ac70ee20de639",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1212,6 +1212,144 @@
                 "sql"
             ],
             "time": "2014-01-12T16:20:24+00:00"
+        },
+        {
+            "name": "knplabs/knp-components",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/knp-components.git",
+                "reference": "4e64b1e79cf28a9e296375881d5ddd9c022333a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/4e64b1e79cf28a9e296375881d5ddd9c022333a1",
+                "reference": "4e64b1e79cf28a9e296375881d5ddd9c022333a1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2",
+                "symfony/event-dispatcher": "^3.4 || ^4.0",
+                "symfony/http-foundation": "^3.4 || ^4.0"
+            },
+            "require-dev": {
+                "doctrine/mongodb-odm": "^2.0.0-RC1",
+                "doctrine/orm": "~2.4",
+                "doctrine/phpcr-odm": "~1.2",
+                "jackalope/jackalope-doctrine-dbal": "~1.2",
+                "phpunit/phpunit": "^7.0 || ^8.0",
+                "ruflin/elastica": "~1.0",
+                "symfony/http-kernel": "^3.4 || ^4.0",
+                "symfony/property-access": "^3.4 || ^4.0"
+            },
+            "suggest": {
+                "doctrine/common": "to allow usage pagination with Doctrine ArrayCollection",
+                "doctrine/mongodb-odm": "to allow usage pagination with Doctrine ODM MongoDB",
+                "doctrine/orm": "to allow usage pagination with Doctrine ORM",
+                "doctrine/phpcr-odm": "to allow usage pagination with Doctrine ODM PHPCR",
+                "propel/propel1": "to allow usage pagination with Propel ORM",
+                "ruflin/elastica": "to allow usage pagination with ElasticSearch Client",
+                "solarium/solarium": "to allow usage pagination with Solarium Client",
+                "symfony/property-access": "To allow sorting arrays"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Knp\\Component\\": "src/Knp/Component"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/knp-components/contributors"
+                }
+            ],
+            "description": "Knplabs component library",
+            "homepage": "http://github.com/KnpLabs/knp-components",
+            "keywords": [
+                "components",
+                "knp",
+                "knplabs",
+                "pager",
+                "paginator"
+            ],
+            "time": "2019-09-02T09:33:02+00:00"
+        },
+        {
+            "name": "knplabs/knp-paginator-bundle",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
+                "reference": "865781b323739c688daaec540f9905704cec51ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/865781b323739c688daaec540f9905704cec51ef",
+                "reference": "865781b323739c688daaec540f9905704cec51ef",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/knp-components": "^1.3 || ^2.0",
+                "php": "^7.1",
+                "symfony/framework-bundle": "^3.4 || ^4.0",
+                "symfony/translation": "^3.4 || ^4.0",
+                "twig/twig": "^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.4 || ^8.0",
+                "symfony/expression-language": "^3.4 || ^4.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Knp\\Bundle\\PaginatorBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/KnpPaginatorBundle/contributors"
+                }
+            ],
+            "description": "Paginator bundle for Symfony to automate pagination and simplify sorting and other features",
+            "homepage": "http://github.com/KnpLabs/KnpPaginatorBundle",
+            "keywords": [
+                "bundle",
+                "knp",
+                "knplabs",
+                "pager",
+                "pagination",
+                "paginator",
+                "symfony"
+            ],
+            "time": "2019-06-27T07:23:50+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2677,16 +2815,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.4.28",
+            "version": "v3.4.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "5e05ffeb1c2e538127e5a33b419edb8b2904b99e"
+                "reference": "944e04808117477f46f804133d17913b77cf63d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/5e05ffeb1c2e538127e5a33b419edb8b2904b99e",
-                "reference": "5e05ffeb1c2e538127e5a33b419edb8b2904b99e",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/944e04808117477f46f804133d17913b77cf63d3",
+                "reference": "944e04808117477f46f804133d17913b77cf63d3",
                 "shasum": ""
             },
             "require": {
@@ -2705,7 +2843,7 @@
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/polyfill-php56": "~1.0",
                 "symfony/polyfill-php70": "~1.6",
-                "twig/twig": "^1.40|^2.9"
+                "twig/twig": "^1.41|^2.10"
             },
             "conflict": {
                 "phpdocumentor/reflection-docblock": "<3.0||>=3.2.0,<3.2.2",
@@ -2784,7 +2922,7 @@
                 "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
                 "phpdocumentor/reflection-docblock": "^3.0|^4.0",
                 "predis/predis": "~1.0",
-                "symfony/phpunit-bridge": "~3.4|~4.0",
+                "symfony/phpunit-bridge": "^3.4.31|^4.3.4|~5.0",
                 "symfony/security-acl": "~2.8|~3.0"
             },
             "type": "library",
@@ -2803,7 +2941,8 @@
                     "Symfony\\Component\\": "src/Symfony/Component/"
                 },
                 "classmap": [
-                    "src/Symfony/Component/Intl/Resources/stubs"
+                    "src/Symfony/Component/Intl/Resources/stubs",
+                    "src/Symfony/Bridge/ProxyManager/Legacy/ProxiedMethodReturnExpression.php"
                 ],
                 "exclude-from-classmap": [
                     "**/Tests/"
@@ -2828,7 +2967,140 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2019-05-28T09:24:58+00:00"
+            "time": "2019-08-26T16:36:53+00:00"
+        },
+        {
+            "name": "symfony/translation",
+            "version": "v4.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/translation.git",
+                "reference": "28498169dd334095fa981827992f3a24d50fed0f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/28498169dd334095fa981827992f3a24d50fed0f",
+                "reference": "28498169dd334095fa981827992f3a24d50fed0f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "symfony/polyfill-mbstring": "~1.0",
+                "symfony/translation-contracts": "^1.1.6"
+            },
+            "conflict": {
+                "symfony/config": "<3.4",
+                "symfony/dependency-injection": "<3.4",
+                "symfony/yaml": "<3.4"
+            },
+            "provide": {
+                "symfony/translation-implementation": "1.0"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/config": "~3.4|~4.0",
+                "symfony/console": "~3.4|~4.0",
+                "symfony/dependency-injection": "~3.4|~4.0",
+                "symfony/finder": "~2.8|~3.0|~4.0",
+                "symfony/http-kernel": "~3.4|~4.0",
+                "symfony/intl": "~3.4|~4.0",
+                "symfony/service-contracts": "^1.1.2",
+                "symfony/var-dumper": "~3.4|~4.0",
+                "symfony/yaml": "~3.4|~4.0"
+            },
+            "suggest": {
+                "psr/log-implementation": "To use logging capability in translator",
+                "symfony/config": "",
+                "symfony/yaml": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Translation\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Translation Component",
+            "homepage": "https://symfony.com",
+            "time": "2019-08-26T08:55:16+00:00"
+        },
+        {
+            "name": "symfony/translation-contracts",
+            "version": "v1.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/translation-contracts.git",
+                "reference": "325b17c24f3ee23cbecfa63ba809c6d89b5fa04a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/325b17c24f3ee23cbecfa63ba809c6d89b5fa04a",
+                "reference": "325b17c24f3ee23cbecfa63ba809c6d89b5fa04a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3"
+            },
+            "suggest": {
+                "symfony/translation-implementation": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Contracts\\Translation\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Generic abstractions related to translation",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "abstractions",
+                "contracts",
+                "decoupling",
+                "interfaces",
+                "interoperability",
+                "standards"
+            ],
+            "time": "2019-08-02T12:15:04+00:00"
         },
         {
             "name": "twig/twig",
@@ -2949,6 +3221,114 @@
                 "php"
             ],
             "time": "2019-05-25T20:07:01+00:00"
+        },
+        {
+            "name": "pdepend/pdepend",
+            "version": "2.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pdepend/pdepend.git",
+                "reference": "9daf26d0368d4a12bed1cacae1a9f3a6f0adf239"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/9daf26d0368d4a12bed1cacae1a9f3a6f0adf239",
+                "reference": "9daf26d0368d4a12bed1cacae1a9f3a6f0adf239",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.7",
+                "symfony/config": "^2.3.0|^3|^4",
+                "symfony/dependency-injection": "^2.3.0|^3|^4",
+                "symfony/filesystem": "^2.3.0|^3|^4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8|^5.7",
+                "squizlabs/php_codesniffer": "^2.0.0"
+            },
+            "bin": [
+                "src/bin/pdepend"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PDepend\\": "src/main/php/PDepend"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Official version of pdepend to be handled with Composer",
+            "time": "2017-12-13T13:21:38+00:00"
+        },
+        {
+            "name": "phpmd/phpmd",
+            "version": "2.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpmd/phpmd.git",
+                "reference": "a05a999c644f4bc9a204846017db7bb7809fbe4c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/a05a999c644f4bc9a204846017db7bb7809fbe4c",
+                "reference": "a05a999c644f4bc9a204846017db7bb7809fbe4c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xml": "*",
+                "pdepend/pdepend": "^2.5",
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "gregwar/rst": "^1.0",
+                "mikey179/vfsstream": "^1.6.4",
+                "phpunit/phpunit": "^4.8.36 || ^5.7.27",
+                "squizlabs/php_codesniffer": "^2.0"
+            },
+            "bin": [
+                "src/bin/phpmd"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPMD\\": "src/main/php"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Manuel Pichler",
+                    "email": "github@manuel-pichler.de",
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Marc Würth",
+                    "email": "ravage@bluewin.ch",
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
+                },
+                {
+                    "name": "Other contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
+                }
+            ],
+            "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
+            "homepage": "https://phpmd.org/",
+            "keywords": [
+                "mess detection",
+                "mess detector",
+                "pdepend",
+                "phpmd",
+                "pmd"
+            ],
+            "time": "2019-07-30T21:13:32+00:00"
         },
         {
             "name": "sensio/generator-bundle",

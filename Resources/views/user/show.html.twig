@@ -2,16 +2,9 @@
 
 {% block menu %}
     <div class="collapse navbar-collapse" id="navbarResponsive">
-        <a class="navbar-brand">Witaj, {{ app.user.username }}!</a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="/">Strona główna</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('recipe_index') }}">Lista przepisów</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('ingredient_index') }}">Składniki</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('recipe_new') }}">Nowy przepis</a>
@@ -31,20 +24,34 @@
 {% endblock %}
 
 {% block body %}
-
+    <a href="{{ path('user_index') }}">Powrót do listy użytkowników</a>
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-            {% for recipe in recipes %}
                 <div class="post-preview">
-                    <a href="{{ path('recipe_show', { 'id': recipe.id }) }}">
+                    <a href="{{ path('user_show', { 'id': user.name }) }}">
                         <h2 class="post-title">
-                            {{ recipe.title }}
+                            {{ user.name }}
                         </h2>
                     </a>
-                    <p class="post-meta">Autor: {{app.user.username}}</p>
                 </div>
+
+                <table>
+                   <tbody>
+                   {% for recipe in user.recipes %}
+                       <tr>
+                           <td>{{ recipe.title }}</td>
+                       </tr>
+                       {{ form_start(delete_form, {'attr': {'onclick': 'return confirm("Czy na pewno chcesz usunąć?")'}}) }}
+                       <input type="submit" value="Usuń">
+                       {{ form_end(delete_form) }}
+                   {% endfor %}
+                   </tbody>
+               </table>
+
+                {{ form_start(delete_form, {'attr': {'onclick': 'return confirm("Czy na pewno chcesz usunąć?")'}}) }}
+                <input type="submit" value="Usuń">
+                {{ form_end(delete_form) }}
                 <hr>
-            {% endfor %}
             <hr>
         </div>
     </div>

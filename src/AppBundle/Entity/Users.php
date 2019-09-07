@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UsersRepository")
- */
+  */
 class Users implements UserInterface
 {
 
@@ -49,6 +49,12 @@ class Users implements UserInterface
      * @ORM\Column(name="password", type="string", length=255, unique=true)
      */
     private $password;
+    /**
+     * var string
+    * @ORM\OneToMany(targetEntity="Recipe", mappedBy="user")
+    * @ORM\JoinColumn(name="user_name", referencedColumnName="user", onDelete="CASCADE")
+    */
+    private $recipes;
 
     /**
      * Set name

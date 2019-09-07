@@ -1,0 +1,10 @@
+{# templates/bundles/TwigBundle/Exception/error403.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Brak dostępu</h1>
+
+    <p>
+        <a href="{{ path('login') }}">Zaloguj się ponownie</a>.
+    </p>
+{% endblock %}

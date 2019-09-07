@@ -2,9 +2,16 @@
 
 {% block menu %}
     <div class="collapse navbar-collapse" id="navbarResponsive">
+        <a class="navbar-brand">Witaj, {{ app.user.username }}!</a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="/">Strona główna</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('recipe_index') }}">Lista przepisów</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('ingredient_index') }}">Składniki</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('recipe_new') }}">Nowy przepis</a>
@@ -21,6 +28,7 @@
 {% endblock %}
 
 {% block body %}
+    <a href="{{ path('recipe_index') }}">Powrót do listy</a>
     <h1>Edycja wpisu</h1>
 
     {{ form_start(edit_form) }}
@@ -28,8 +36,7 @@
         <input type="submit" value="Potwierdź zmiany" />
     {{ form_end(edit_form) }}
 
-        <a href="{{ path('recipe_index') }}">Powrót do listy</a>
-        {{ form_start(delete_form) }}
-        <input type="submit" value="Usuń">
-        {{ form_end(delete_form) }}
+    {{ form_start(delete_form, {'attr': {'onclick': 'return confirm("Czy na pewno chcesz usunąć?")'}}) }}
+    <input type="submit" value="Usuń">
+    {{ form_end(delete_form) }}
 {% endblock %}

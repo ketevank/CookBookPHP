@@ -2,9 +2,16 @@
 
 {% block menu %}
     <div class="collapse navbar-collapse" id="navbarResponsive">
+        <a class="navbar-brand">Witaj, {{ app.user.username }}!</a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="/">Strona główna</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('recipe_index') }}">Lista przepisów</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('ingredient_index') }}">Składniki</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('recipe_new') }}">Nowy przepis</a>
@@ -35,7 +42,7 @@
     {% if current_user == recipe.user.name %}
         <a href="{{ path('recipe_edit', { 'id': recipe.id }) }}">Edytuj</a>
 
-        {{ form_start(delete_form) }}
+        {{ form_start(delete_form, {'attr': {'onclick': 'return confirm("Czy na pewno chcesz usunąć?")'}}) }}
         <input type="submit" value="Usuń">
         {{ form_end(delete_form) }}
 

@@ -1,28 +1,41 @@
 {% extends 'base.html.twig' %}
-
+{% block menu %}
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <a class="navbar-brand">Witaj, {{ app.user.username }}!</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Strona główna</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('recipe_index') }}">Lista przepisów</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('ingredient_index') }}">Składniki</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('recipe_new') }}">Nowy przepis</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('security_logout') }}">Wyloguj się</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
 {% block body %}
-    <h1>Ingredients list</h1>
-
+    <h1>Moje składniki</h1>
+    <a href="{{ path('ingredient_new') }}">Nowy składnik</a>
     <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
         <tbody>
         {% for ingredient in ingredients %}
             <tr>
-                <td><a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.id }}</a></td>
-                <td>{{ ingredient.name }}</td>
+                <td><a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.name }}</a></td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">show</a>
+                            <a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">Przepisy</a>
                         </li>
                         <li>
-                            <a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">edit</a>
+                            <a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">Edytuj składnik</a>
                         </li>
                     </ul>
                 </td>
@@ -30,10 +43,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('ingredient_new') }}">Create a new ingredient</a>
-        </li>
-    </ul>
 {% endblock %}

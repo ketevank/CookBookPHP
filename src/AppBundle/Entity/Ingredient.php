@@ -101,7 +101,7 @@ class Ingredient
     /**
      * @return string
      */
-    public function getUser(): string
+    public function getUser(): Users
     {
         return $this->user;
     }
@@ -109,7 +109,7 @@ class Ingredient
     /**
      * @param string $user
      */
-    public function setUser(string $user): void
+    public function setUser(Users $user): void
     {
         $this->user = $user;
     }

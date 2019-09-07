@@ -10,27 +10,31 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class RegistrationController extends Controller
+class SetupController extends Controller
 {
     /**
-     * @Route("/register", name="user_registration")
+     * @Route("/setup", name="admin_registration")
      */
     public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         // 1) build the form
         $user = new Users();
+        $user->setName("admin");
         $form = $this->createForm(UserType::class, $user);
 
         // 2) handle the submit (will only happen on POST)
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() /*&& $form->isValid()*/) { //TODO FIX THIS
+        $entityManager = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted() &&
+            $entityManager->getRepository('AppBundle:Users')
+                ->findOneBy(array("name" => "admin")) == null/*&& $form->isValid()*/) { //TODO FIX THIS
             // 3) Encode the password (you could also do this via Doctrine listener)
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
 
             // 4) save the User!
-            $entityManager = $this->getDoctrine()->getManager();
+            $user->setRoles([$user::ROLE_ADMIN]);
             $entityManager->persist($user);
             $entityManager->flush();
 

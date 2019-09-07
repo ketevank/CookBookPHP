@@ -1,39 +1,40 @@
 {% extends 'base.html.twig' %}
-
+{% block menu %}
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <a class="navbar-brand">Witaj, {{ app.user.username }}!</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Strona główna</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('recipe_index') }}">Lista przepisów</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('ingredient_index') }}">Składniki</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('recipe_new') }}">Nowy przepis</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('security_logout') }}">Wyloguj się</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
 {% block body %}
-    <h1>Ingredient</h1>
+    <a href="{{ path('ingredient_index') }}">Powrót do listy składników</a>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ ingredient.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ ingredient.name }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <h3>Przepisy z wykorzystaniem: {{ ingredient.name }}</h3>
 
     <ul>
-
         <div class="recipies">
             {% for recipe in ingredient.recipes %}
                 <a href="/recipe/{{ recipe.id }}">{{ recipe.title }}</a>
             {% endfor %}
         </div>
-
-        <li>
-            <a href="{{ path('ingredient_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('ingredient_edit', { 'id': ingredient.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
     </ul>
+
+    {{ form_start(delete_form, {'attr': {'onclick': 'return confirm("Czy na pewno chcesz usunąć?")'}}) }}
+    <input type="submit" value="Usuń">
+    {{ form_end(delete_form) }}
 {% endblock %}
