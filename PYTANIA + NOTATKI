@@ -1,9 +1,6 @@
-ustaw datę do przepisów
-szukanie po składnikach
-kategorie!
-
-
-
+ODPALANIE DOCKERA:
+cd home/paulina/Projects/PhpstormProjects/projekt-php/app/docker  -> w tym folderze
+docker-compose up -d    -> działa w tle
 
 
 AD. obrazki wstawiane przez użytkownika:
@@ -14,3 +11,23 @@ walidacja pliku (najpierw plik do katalogu tymczasowego, a po walidacji do katal
 co do symfony:
     zapisać do bazy danych losową nazwę pliku (aby uniknąć powtórzeń w nazwach użytkownika)
     klasa Uploaded File
+
+
+"pamiętajcie, że projekt musi być połączony linkiem symbolicznym" (na wierzbie???)
+security voters
+
+
+TODO:
+alerty i powiadomienia
+ilości i jednostki składników???
+panel admina
+zmiana danych użytkownika?
+kategorie przepisów?
+paginacja?
+tłumaczenia?
+wyłącz profilera
+profil użytkownika
+co gdy user się powtarza? (błąd)
+
+składniki tylko konkretnego użytkownika???
+sesje? uporządkowanie logowania/wylogowywania

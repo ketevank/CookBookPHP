@@ -16,31 +16,24 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('security_logout') }}">Wyloguj się</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('user_index') }}">Użytkownicy</a>
-            </li>
         </ul>
     </div>
 {% endblock %}
 
 {% block header %}
-    <h1>Panel administracyjny</h1>
-    <h2>użytkownicy</h2>
+    <h1>Książka kucharska</h1>
 {% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-            {% for user in users %}
-                <div class="post-preview">
-                    <a href="{{ path('user_show', { 'id': user.name }) }}">
-                        <h2 class="post-title">
-                            {{ user.name }}
-                        </h2>
-                    </a>
-                </div>
-                <hr>
-            {% endfor %}
-            <hr>
-    </div>
+    <h1>Dane użytkownika</h1>
+    <h3>Edycja</h3>
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <input type="submit" value="Potwierdź zmiany" />
+    {{ form_end(edit_form) }}
+
+    {{ form_start(delete_form, {'attr': {'onclick': 'return confirm("Czy na pewno chcesz usunąć?")'}}) }}
+    <input type="submit" value="Usuń">
+    {{ form_end(delete_form) }}
 {% endblock %}

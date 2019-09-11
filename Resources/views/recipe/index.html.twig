@@ -5,9 +5,6 @@
         <a class="navbar-brand">Witaj, {{ app.user.username }}!</a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/">Strona główna</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="{{ path('recipe_index') }}">Lista przepisów</a>
             </li>
             <li class="nav-item">
@@ -15,7 +12,10 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('recipe_new') }}">Nowy przepis</a>
-            </li>
+            </li>{#
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('user_show') }}">Profil</a>
+            </li>#}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('security_logout') }}">Wyloguj się</a>
             </li>
@@ -31,9 +31,13 @@
 {% endblock %}
 
 {% block body %}
+    <a href="{{ path('recipe_new') }}">Nowy przepis</a>
+
+    <h1>Moje przepisy:</h1>
 
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
+            {#TODO: jeśli brak przepisów, wyświetl informację#}
             {% for recipe in recipes %}
                 <div class="post-preview">
                     <a href="{{ path('recipe_show', { 'id': recipe.id }) }}">

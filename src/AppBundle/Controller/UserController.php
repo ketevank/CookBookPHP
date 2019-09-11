@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Security\Core\User\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\QueryBuilder;
 
@@ -72,42 +73,54 @@ class UserController extends Controller
     public function showAction(Users $user, UserInterface $users)
     {
         $deleteForm = $this->createDeleteForm($user);
-
+        $editForm = $this->createForm('AppBundle\Form\UserType', $user);
         return $this->render('user/show.html.twig', array(
             'user' => $user,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'current_user' => $user->getUsername(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing recipe entity.
+     * Displays a form to edit an existing user entity.
      *
-     * @Route("/{id}/edit", name="recipe_edit")
+     * @Route("/{id}/edit", name="user_edit")
      * @Method({"GET", "POST"})
      */
-    /*public function editAction(Request $request, Recipe $recipe, UserInterface $users)
+    public function editAction(Request $request, User $user)
     {
-        if ($recipe->getUser()->getUsername() != $users->getUsername()) {
-            return $this->redirectToRoute('recipe_index');
+        /*$form = $this->createForm(User::class, $user);
+        // only handles data on POST
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            $this->addFlash('success', 'Dane zostały zmienione');
+            return $this->redirectToRoute('user_show');
         }
+        return $this->render('user/edit.html.twig', [
+            'userForm' => $form->createView()
+        ]);*/
 
-        $deleteForm = $this->createDeleteForm($recipe);
-        $editForm = $this->createForm('AppBundle\Form\RecipeType', $recipe);
+        $deleteForm = $this->createDeleteForm($user);
+        $editForm = $this->createForm('AppBundle\Form\UserType', $user);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('recipe_show', array('id' => $recipe->getId()));
+            return $this->redirectToRoute('user_show');
         }
 
-        return $this->render('recipe/edit.html.twig', array(
-            'recipe' => $recipe,
+        return $this->render('user/edit.html.twig', array(
+            'user' => $user,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
-    }*/
+    }
 
     /**
      * Deletes a user entity.
