@@ -41,14 +41,14 @@ class Recipe
 
     /**
      * Many Users have Many Groups.
-     * @ORM\ManyToMany(targetEntity="Ingredient", inversedBy="recipies")
+     * @ORM\ManyToMany(targetEntity="Ingredient", inversedBy="recipes")
      * @ORM\JoinTable(name="ingredients_list")
      */
     private $ingredients;
 
     /**
      * @var string
-     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\ManyToOne(targetEntity="Users", inversedBy="recipes")
      * @ORM\JoinColumn(name="user_name", referencedColumnName="name")
      */
     private $user;

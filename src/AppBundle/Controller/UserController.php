@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\QueryBuilder;
@@ -88,7 +89,7 @@ class UserController extends Controller
      * @Route("/{id}/edit", name="user_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, User $user)
+    public function editAction(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder, LoggerInterface $logger)
     {
         /*$form = $this->createForm(User::class, $user);
         // only handles data on POST
@@ -109,8 +110,14 @@ class UserController extends Controller
         $editForm = $this->createForm('AppBundle\Form\UserType', $user);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        $logger->info('I just got the logger');
+
+        if ($editForm->isSubmitted() /*&& $editForm->isValid()*/) {
+            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
             return $this->redirectToRoute('user_show');
         }

@@ -14,7 +14,13 @@
                 <a class="nav-link" href="{{ path('recipe_new') }}">Nowy przepis</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ path('user_edit') }}">Profil</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ path('security_logout') }}">Wyloguj się</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('user_index') }}">Użytkownicy</a>
             </li>
         </ul>
     </div>
@@ -25,15 +31,14 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Dane użytkownika</h1>
-    <h3>Edycja</h3>
+    <h3>Edycja danych</h3>
 
     {{ form_start(edit_form) }}
     {{ form_widget(edit_form) }}
     <input type="submit" value="Potwierdź zmiany" />
     {{ form_end(edit_form) }}
 
-    {{ form_start(delete_form, {'attr': {'onclick': 'return confirm("Czy na pewno chcesz usunąć?")'}}) }}
-    <input type="submit" value="Usuń">
+    {{ form_start(delete_form, {'attr': {'onclick': 'return confirm("Czy na pewno chcesz usunąć swój profil?")'}}) }}
+    <input type="submit" value="Usuń konto">
     {{ form_end(delete_form) }}
 {% endblock %}
