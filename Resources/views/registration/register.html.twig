@@ -29,9 +29,9 @@
     </h1>
     {# app/Resources/views/registration/register.html.twig #}
     {{ form_start(form) }}
-    {{ form_row(form.name) }}
-    {{ form_row(form.password.first) }}
-    {{ form_row(form.password.second) }}
+    {{ form_row(form.name, { 'label': 'Login' }) }}
+    {{ form_row(form.password.first, { 'label': 'Hasło' }) }}
+    {{ form_row(form.password.second, { 'label': 'Powtórz hasło' }) }}
 
     <button type="submit">Załóż konto</button>
     {{ form_end(form) }}

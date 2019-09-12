@@ -34,6 +34,9 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
+        {{ form_row(form.title, { 'label': 'Tytuł' }) }}
+        {{ form_row(form.content, { 'label': 'Treść' }) }}
+        {{ form_row(form.ingredients, { 'label': 'Składniki' }) }}
         <a href="{{ path('ingredient_new') }}">Dodaj składnik</a><br>
         <input type="submit" value="Zapisz" />
     {{ form_end(form) }}
