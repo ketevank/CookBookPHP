@@ -6,34 +6,46 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="register">Załóż konto</a>
+                <a class="nav-link" href="register">{% trans %}Załóż konto{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="login">Zaloguj się</a>
+                <a class="nav-link" href="login">{% trans %}Zaloguj się{% endtrans %}</a>
             </li>
         </ul>
     </div>
 {% endblock %}
 
 {% block title %}
-    {{ 'Rejestracja' }}
+    {{ 'Rejestracja'|trans }}
 {% endblock %}
 
 {% block header %}
-    <h1>Książka kucharska</h1>
+    <h1>
+        {% trans %}
+        Książka kucharska
+        {% endtrans %}
+    </h1>
 {% endblock %}
 
 {% block body %}
     <h1>
-        Rejestracja:
+        {% trans %}
+        Rejestracja
+        {% endtrans %}:
     </h1>
+    {% if error %}
+        {%  include 'default/_single_flash_message.html.twig' with {
+            type: 'danger',
+            message: error.messageKey|trans
+        } %}
+    {% endif %}
     {# app/Resources/views/registration/register.html.twig #}
     {{ form_start(form) }}
-    {{ form_row(form.name, { 'label': 'Login' }) }}
-    {{ form_row(form.password.first, { 'label': 'Hasło' }) }}
-    {{ form_row(form.password.second, { 'label': 'Powtórz hasło' }) }}
+    {{ form_row(form.name, { 'label': 'Login'|trans }) }}
+    {{ form_row(form.password.first, { 'label': 'Hasło'|trans }) }}
+    {{ form_row(form.password.second, { 'label': 'Powtórz hasło'|trans }) }}
 
-    <button type="submit">Załóż konto</button>
+    <button type="submit">{% trans %}Załóż konto{% endtrans %}</button>
     {{ form_end(form) }}
 
 {% endblock %}

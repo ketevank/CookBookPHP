@@ -2,9 +2,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Brak dostępu</h1>
+    <h1>{% trans %}Brak dostępu{% endtrans %}</h1>
 
     <p>
-        <a href="{{ path('login') }}">Zaloguj się ponownie</a>.
+        <a href="{{ path('login') }}">{% trans %}Zaloguj się ponownie{% endtrans %}</a>.
     </p>
 {% endblock %}

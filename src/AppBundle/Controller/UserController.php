@@ -154,7 +154,7 @@ class UserController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('recipe_index');
+        return $this->redirectToRoute('user_index');
     }
 
     /**
@@ -162,7 +162,7 @@ class UserController extends Controller
      *
      * @param User $user The recipe entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return \Symfony\Component\Form\FormInterface
      */
     private function createDeleteForm(Users $user)
     {

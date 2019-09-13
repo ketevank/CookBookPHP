@@ -5,17 +5,21 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="register">Załóż konto</a>
+                <a class="nav-link" href="register">{% trans %}Załóż konto{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="login">Zaloguj się</a>
+                <a class="nav-link" href="login">{% trans %}Zaloguj się{% endtrans %}</a>
             </li>
         </ul>
     </div>
 {% endblock %}
 
 {%  block header %}
-    <h1>Książka kucharska</h1>
+    <h1>
+        {% trans %}
+            Książka kucharska
+        {% endtrans %}
+    </h1>
 {% endblock %}
 
 {% block body %}

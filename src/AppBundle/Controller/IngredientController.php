@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Ingredient;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -57,6 +58,9 @@ class IngredientController extends Controller
         return $this->render('ingredient/new.html.twig', array(
             'ingredient' => $ingredient,
             'form' => $form->createView(),
+            'error' => array(
+                "messageKey" => ""
+            )
         ));
     }
 
@@ -92,8 +96,26 @@ class IngredientController extends Controller
         $editForm = $this->createForm('AppBundle\Form\IngredientType', $ingredient);
         $editForm->handleRequest($request);
 
+        $errors = array(
+            "messageKey" => ""
+        );
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            try {
+                // 4) save the ingredient
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($ingredient);
+                $entityManager->flush();
+            }
+            catch(UniqueConstraintViolationException $e){
+                $errors = array(
+                    "messageKey" => "inv.ingredient.duplicate",
+                );
+                return $this->render(
+                    'ingredient/new.html.twig',
+                    ['form' => $editForm->createView(), 'error'=> $errors]
+                );
+            }
 
             return $this->redirectToRoute('ingredient_edit', array('id' => $ingredient->getId()));
         }
@@ -102,6 +124,7 @@ class IngredientController extends Controller
             'ingredient' => $ingredient,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'error'=> $errors
         ));
     }
 

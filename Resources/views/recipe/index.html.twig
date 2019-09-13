@@ -2,42 +2,41 @@
 
 {% block menu %}
     <div class="collapse navbar-collapse" id="navbarResponsive">
-        <a class="navbar-brand">Witaj, {{ app.user.username }}!</a>
+        <a class="navbar-brand">{% trans %}Witaj{% endtrans %}, {{ app.user.username }}!</a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('recipe_index') }}">Lista przepisów</a>
+                <a class="nav-link" href="{{ path('recipe_index') }}">{% trans %}Lista przepisów{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('ingredient_index') }}">Składniki</a>
+                <a class="nav-link" href="{{ path('ingredient_index') }}">{% trans %}Składniki{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('recipe_new') }}">Nowy przepis</a>
+                <a class="nav-link" href="{{ path('recipe_new') }}">{% trans %}Nowy przepis{% endtrans %}</a>
             </li>
             {#<li class="nav-item">
                 <a class="nav-link" href="{{ path('user_edit') }}">Profil</a>
             </li>#}
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('security_logout') }}">Wyloguj się</a>
+                <a class="nav-link" href="{{ path('security_logout') }}">{% trans %}Wyloguj się{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('user_index') }}">Użytkownicy</a>
+                <a class="nav-link" href="{{ path('user_index') }}">{% trans %}Użytkownicy{% endtrans %}</a>
             </li>
         </ul>
     </div>
 {% endblock %}
 
 {% block header %}
-    <h1>Książka kucharska</h1>
+    <h1>{% trans %}Książka kucharska{% endtrans %}</h1>
 {% endblock %}
 
 {% block body %}
-    <a href="{{ path('recipe_new') }}">Nowy przepis</a>
+    <a href="{{ path('recipe_new') }}">{% trans %}Nowy przepis{% endtrans %}</a>
 
-    <h1>Moje przepisy:</h1>
+    <h1>{% trans %}Moje przepisy{% endtrans %}:</h1>
 
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-            {#TODO: jeśli brak przepisów, wyświetl informację#}
             {% for recipe in recipes %}
                 <div class="post-preview">
                     <a href="{{ path('recipe_show', { 'id': recipe.id }) }}">
@@ -45,7 +44,7 @@
                             {{ recipe.title }}
                         </h2>
                     </a>
-                    <p class="post-meta">Autor: {{app.user.username}}</p>
+                    <p class="post-meta">{% trans %}Autor{% endtrans %}: {{app.user.username}}</p>
                 </div>
                 <hr>
             {% endfor %}

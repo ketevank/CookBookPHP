@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="pl" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="inv.cred">
+                <source>Invalid credentials.</source>
+                <target>Invalid credentials.</target>
+            </trans-unit>
+            <trans-unit id="inv.usn">
+                <source>Username could not be found.</source>
+                <target>Username could not be found.</target>
+            </trans-unit>
+            <trans-unit id="label.tags">
+                <source>label.tags</source>
+                <target>Tags</target>
+            </trans-unit>
+            <trans-unit id="inv.user.duplicate">
+                <source>inv.user.duplicate</source>
+                <target>User already exists</target>
+            </trans-unit>
+            <trans-unit id="inv.ingredient.duplicate">
+                <source>inv.ingredient.duplicate</source>
+                <target>Ingredient already exists</target>
+            </trans-unit>
+            <trans-unit id="username">
+                 <source>Login</source>
+                 <target>Username</target>
+            </trans-unit>
+            <trans-unit id="passw">
+                <source>Hasło</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="passwrep">
+                <source>Powtórz hasło</source>
+                <target>Repeat password</target>
+            </trans-unit>
+            <trans-unit id="cookbook">
+                <source>Książka kucharska</source>
+                <target>Cookbook</target>
+            </trans-unit>
+            <trans-unit id="register">
+                <source>Rejestracja</source>
+                <target>Registration</target>
+            </trans-unit>
+            <trans-unit id="account">
+                <source>Załóż konto</source>
+                <target>Sign up</target>
+            </trans-unit>
+            <trans-unit id="login">
+                <source>Zaloguj się</source>
+                <target>Sign in</target>
+            </trans-unit>
+            <trans-unit id="signin">
+                <source>Logowanie:</source>
+                <target>Sign in:</target>
+            </trans-unit>
+            <trans-unit id="signinbutton">
+                <source>Zaloguj</source>
+                <target>Sign in</target>
+            </trans-unit>
+            <trans-unit id="forbaccess">
+                <source>Brak dostępu</source>
+                <target>Forbidden access</target>
+            </trans-unit>
+            <trans-unit id="signinback">
+                <source>Zaloguj się ponownie</source>
+                <target>Go back to signing in</target>
+            </trans-unit>
+            <trans-unit id="hello">
+                <source>Witaj</source>
+                <target>Hello</target>
+            </trans-unit>
+            <trans-unit id="recipelist">
+                <source>Lista przepisów</source>
+                <target>Recipes</target>
+            </trans-unit>
+            <trans-unit id="ingredlist">
+                <source>Składniki</source>
+                <target>Ingredients</target>
+            </trans-unit>
+            <trans-unit id="newrecipe">
+                <source>Nowy przepis</source>
+                <target>New recipe</target>
+            </trans-unit>
+            <trans-unit id="signout">
+                <source>Wyloguj się</source>
+                <target>Sign out</target>
+            </trans-unit>
+            <trans-unit id="users">
+                 <source>Użytkownicy</source>
+                 <target>Users</target>
+            </trans-unit>
+            <trans-unit id="backtolist">
+                <source>Powrót do listy</source>
+                <target>Back to the list</target>
+            </trans-unit>
+            <trans-unit id="recipewith">
+                <source>Przepisy z</source>
+                <target>Recipes with</target>
+            </trans-unit>
+            <trans-unit id="edit">
+                <source>Edytuj</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="ingradd">
+                <source>Dodaj składnik</source>
+                <target>Add ingredient</target>
+            </trans-unit>
+            <trans-unit id="ingraddbutton">
+                <source>Dodaj</source>
+                <target>Add</target>
+            </trans-unit>
+            <trans-unit id="recipeback">
+                <source>Wróć do przepisu</source>
+                <target>Back to the recipe</target>
+            </trans-unit>
+            <trans-unit id="delete">
+                <source>Usuń</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="ingrednew">
+                <source>Nowy składnik</source>
+                <target>New ingredient</target>
+            </trans-unit>
+            <trans-unit id="myingred">
+                <source>Moje składniki</source>
+                <target>My ingredients</target>
+            </trans-unit>
+            <trans-unit id="recipesingr">
+                <source>Przepisy</source>
+                <target>Recipes</target>
+            </trans-unit>
+            <trans-unit id="ingredit">
+                <source>Edytuj składnik</source>
+                <target>Edit ingredient</target>
+            </trans-unit>
+            <trans-unit id="title">
+                <source>Tytuł</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="content">
+                <source>Treść</source>
+                <target>Content</target>
+            </trans-unit>
+            <trans-unit id="save">
+                <source>Zapisz</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="myrecipes">
+                <source>Moje przepisy</source>
+                <target>My recipes</target>
+            </trans-unit>
+            <trans-unit id="author">
+                <source>Autor</source>
+                <target>By</target>
+            </trans-unit>
+            <trans-unit id="editrecipe">
+                <source>Edycja wpisu</source>
+                <target>Edit recipe</target>
+            </trans-unit>
+            <trans-unit id="editrecipeconfirm">
+                <source>Potwierdź zmiany</source>
+                <target>Confirm changes</target>
+            </trans-unit>
+            <trans-unit id="adminpanel">
+                <source>Panel administracyjny</source>
+                <target>Admin panel</target>
+            </trans-unit>
+            <trans-unit id="useredit">
+                <source>Edycja danych użytkownika</source>
+                <target>Edit user data</target>
+            </trans-unit>
+            <trans-unit id="userrecipes">
+                <source>Wpisy użytkownika</source>
+                <target>User recipes</target>
+            </trans-unit>
+            <trans-unit id="userrecdel">
+                <source>Usuń wpis</source>
+                <target>Delete recipe</target>
+            </trans-unit>
+            <trans-unit id="userdelete">
+                <source>Usuń użytkownika</source>
+                <target>Delete user</target>
+            </trans-unit>
+            <trans-unit id="delete.confirmation">
+                <source>Czy na pewno chcesz usunąć?</source>
+                <target>Are you sure you want to delete?</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

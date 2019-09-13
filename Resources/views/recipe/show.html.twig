@@ -2,22 +2,25 @@
 
 {% block menu %}
     <div class="collapse navbar-collapse" id="navbarResponsive">
-        <a class="navbar-brand">Witaj, {{ app.user.username }}!</a>
+        <a class="navbar-brand">{% trans %}Witaj{% endtrans %}, {{ app.user.username }}!</a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="">Strona główna</a>
+                <a class="nav-link" href="{{ path('recipe_index') }}">{% trans %}Lista przepisów{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('recipe_index') }}">Lista przepisów</a>
+                <a class="nav-link" href="{{ path('ingredient_index') }}">{% trans %}Składniki{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('ingredient_index') }}">Składniki</a>
+                <a class="nav-link" href="{{ path('recipe_new') }}">{% trans %}Nowy przepis{% endtrans %}</a>
+            </li>
+            {#<li class="nav-item">
+                <a class="nav-link" href="{{ path('user_edit') }}">Profil</a>
+            </li>#}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('security_logout') }}">{% trans %}Wyloguj się{% endtrans %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('recipe_new') }}">Nowy przepis</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('security_logout') }}">Wyloguj się</a>
+                <a class="nav-link" href="{{ path('user_index') }}">{% trans %}Użytkownicy{% endtrans %}</a>
             </li>
         </ul>
     </div>
@@ -28,7 +31,7 @@
 {% endblock %}
 
 {% block body %}
-    <a href="{{ path('recipe_index') }}">Powrót do listy</a>
+    <a href="{{ path('recipe_index') }}">{% trans %}Powrót do listy{% endtrans %}</a>
     <h1>{{ recipe.title }}</h1>
 
     <div>
@@ -40,7 +43,7 @@
         {% endfor %}
     </div>
     {% if current_user == recipe.user.name %}
-        <a href="{{ path('recipe_edit', { 'id': recipe.id }) }}">Edytuj</a>
+        <a href="{{ path('recipe_edit', { 'id': recipe.id }) }}">{% trans %}Edytuj{% endtrans %}</a>
 
         {{ form_start(delete_form, {'attr': {'onclick': 'return confirm("Czy na pewno chcesz usunąć?")'}}) }}
         <input type="submit" value="Usuń">
