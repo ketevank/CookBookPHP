@@ -46,7 +46,10 @@ class SetupController extends Controller
 
         return $this->render(
             'registration/register.html.twig',
-            ['form' => $form->createView()]
+            ['form' => $form->createView(), 'error'=> array(
+                "messageKey" => "",
+                "messageData" => array()
+            )]
         );
     }
 }
